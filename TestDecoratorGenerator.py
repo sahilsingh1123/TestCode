@@ -65,4 +65,4 @@ instance of wrapperFunc not the instance of displayMessage. so beware while usin
 
 --> you can use wraps function from functools which will handle this above issue.
 '''
-#displayMessage()
+displayMessage()
