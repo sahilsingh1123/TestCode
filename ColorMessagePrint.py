@@ -3,7 +3,7 @@ import sys
 
 # Colored printing functions for strings that use universal ANSI escape sequences.
 # fail: bold red, pass: bold green, warn: bold yellow,
-# info: bold blue, bold: bold white
+# info: bold blue, bold: bold white -> test
 
 class ColorPrint:
 
