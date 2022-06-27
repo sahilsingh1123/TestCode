@@ -4,7 +4,7 @@ Test code for recursion
 
 """
 
-from ColorMessagePrint import ColorPrint
+from basic.ColorMessagePrint import ColorPrint
 
 
 def recursion(n):
