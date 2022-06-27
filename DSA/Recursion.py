@@ -4,6 +4,8 @@ Test code for recursion
 
 """
 
+from ColorMessagePrint import ColorPrint
+
 
 def recursion(n):
     if n == 1:
@@ -11,5 +13,5 @@ def recursion(n):
     return n*recursion(n-1)
 
 
-print(recursion(5))
-print("end of program")
+ColorPrint.print_bold(str(recursion(5)))
+ColorPrint.print_pass("end of program")
