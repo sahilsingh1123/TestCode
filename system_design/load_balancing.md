@@ -18,6 +18,7 @@
 
 **Nginx:** Use least_conn; within the upstream block in your Nginx configuration.
 Cloud Providers: Select the Least Connection routing algorithm if available in the load balancer settings (e.g., AWS calls it "Least Outstanding Requests" for some types of load balancers).
+
 **Implement Health Checks:** Configure health checks within your load balancer to regularly verify the health of each Flask application instance. This usually involves setting up an endpoint in your Flask application (e.g., /health) that returns a 200 OK status if the application is healthy.
 
 **Test Your Setup:** Before going live, thoroughly test your setup under various scenarios, including simulating server failures, high traffic conditions, and long-lived connections to ensure that the load is distributed as expected and that failover works correctly.
