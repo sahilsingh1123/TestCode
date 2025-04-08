@@ -7,6 +7,7 @@ from sentence_transformers.training_args import SentenceTransformerTrainingArgum
 
 class EmbeddFineTune:
     def __init__(self):
+        # initialise
         self._load_dataset()
         self._load_evaluator()
         self._initialise_model_and_loss_func()
