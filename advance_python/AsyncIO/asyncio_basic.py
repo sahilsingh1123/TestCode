@@ -34,4 +34,31 @@ async def main_gather():
     # print(results)
 
 
-asyncio.run(main_gather())
+# asyncio.run(main_gather())
+
+# Synchronization primitives
+async def producer(q):
+    for i in range(5):
+        # await asyncio.sleep(1)
+        await q.put(i)
+        print("produced", i)
+    await q.join()
+
+async def consumer(q):
+    while True:
+        item = await q.get()
+        print("consumed", item)
+        q.task_done()
+
+async def pipeline():
+    q = asyncio.Queue()
+    # gather will not kill the consumer as there is no exit condition
+    # results = await asyncio.gather(producer(q), consumer(q))
+
+    cons_task = asyncio.create_task(consumer(q))
+    await producer(q)
+    await q.join()
+    cons_task.cancel()
+
+
+asyncio.run(pipeline())
