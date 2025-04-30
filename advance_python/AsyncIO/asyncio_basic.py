@@ -61,4 +61,17 @@ async def pipeline():
     cons_task.cancel()
 
 
-asyncio.run(pipeline())
+# asyncio.run(pipeline())
+
+# Running blocking code in asyncio
+
+def blocking_io(x):
+    import time; time.sleep(2)
+    return x
+
+async def call_blocking_io():
+    loop = asyncio.get_running_loop()
+    result = await loop.run_in_executor(None, blocking_io, 5)
+    print(result)
+
+asyncio.run(call_blocking_io())
