@@ -1,8 +1,9 @@
-import string
 import random
+import string
+
 
 class VehicleInfo:
-    
+
     def __init__(self, brand, electric, catalogue_price):
         self.brand = brand
         self.electric = electric
@@ -17,6 +18,7 @@ class VehicleInfo:
     def print(self):
         print(f"Brand: {self.brand}")
         print(f"Payable tax: {self.compute_tax()}")
+
 
 class Vehicle:
 
@@ -34,7 +36,7 @@ class Vehicle:
 class VehicleRegistry:
 
     def __init__(self):
-        self.vehicle_info = { }
+        self.vehicle_info = {}
         self.add_vehicle_info("Tesla Model 3", True, 60000)
         self.add_vehicle_info("Volkswagen ID3", True, 35000)
         self.add_vehicle_info("BMW 5", False, 45000)
@@ -44,7 +46,7 @@ class VehicleRegistry:
         self.vehicle_info[brand] = VehicleInfo(brand, electric, catalogue_price)
 
     def generate_vehicle_id(self, length):
-        return ''.join(random.choices(string.ascii_uppercase, k=length))
+        return "".join(random.choices(string.ascii_uppercase, k=length))
 
     def generate_vehicle_license(self, id):
         return f"{id[:2]}-{''.join(random.choices(string.digits, k=2))}-{''.join(random.choices(string.ascii_uppercase, k=2))}"
@@ -65,6 +67,7 @@ class Application:
 
         # print out the vehicle information
         vehicle.print()
+
 
 app = Application()
 app.register_vehicle("Volkswagen ID3")

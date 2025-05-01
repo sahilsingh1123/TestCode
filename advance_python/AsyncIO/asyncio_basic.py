@@ -6,15 +6,18 @@ asyncio module
 import asyncio
 import time
 
+
 async def fetch_data(x):
     await asyncio.sleep(1)
     return x * 2
+
 
 async def main_1():
     # schedule fetch_data as task
     task = asyncio.create_task(fetch_data(10))
     result = await task
     print(result)
+
 
 # asyncio.run(main_1())
 async def worker(id):
@@ -23,6 +26,7 @@ async def worker(id):
     elapsed = time.perf_counter() - start
     print(f"worker {id} took {elapsed:.3f}s")
     return f"worker {id} done"
+
 
 async def main_gather():
     # gather
@@ -36,6 +40,7 @@ async def main_gather():
 
 # asyncio.run(main_gather())
 
+
 # Synchronization primitives
 async def producer(q):
     for i in range(5):
@@ -44,11 +49,13 @@ async def producer(q):
         print("produced", i)
     await q.join()
 
+
 async def consumer(q):
     while True:
         item = await q.get()
         print("consumed", item)
         q.task_done()
+
 
 async def pipeline():
     q = asyncio.Queue()
@@ -65,13 +72,18 @@ async def pipeline():
 
 # Running blocking code in asyncio
 
+
 def blocking_io(x):
-    import time; time.sleep(2)
+    import time
+
+    time.sleep(2)
     return x
+
 
 async def call_blocking_io():
     loop = asyncio.get_running_loop()
     result = await loop.run_in_executor(None, blocking_io, 5)
     print(result)
+
 
 asyncio.run(call_blocking_io())

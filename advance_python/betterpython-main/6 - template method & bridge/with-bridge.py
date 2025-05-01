@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+
 class Exchange(ABC):
     @abstractmethod
     def connect(self):
@@ -10,12 +11,14 @@ class Exchange(ABC):
     def get_market_data(self, coin: str) -> List[float]:
         pass
 
+
 class Binance(Exchange):
     def connect(self):
         print(f"Connecting to Binance exchange...")
 
     def get_market_data(self, coin: str) -> List[float]:
         return [10, 12, 18, 14]
+
 
 class Coinbase(Exchange):
     def connect(self):
@@ -50,6 +53,7 @@ class TradingBot(ABC):
     def should_sell(self, prices: List[float]) -> bool:
         pass
 
+
 class AverageTrader(TradingBot):
     def list_average(self, l: List[float]) -> float:
         return sum(l) / len(l)
@@ -60,6 +64,7 @@ class AverageTrader(TradingBot):
     def should_sell(self, prices: List[float]) -> bool:
         return prices[-1] > self.list_average(prices)
 
+
 class MinMaxTrader(TradingBot):
 
     def should_buy(self, prices: List[float]) -> bool:
@@ -67,6 +72,7 @@ class MinMaxTrader(TradingBot):
 
     def should_sell(self, prices: List[float]) -> bool:
         return prices[-1] == max(prices)
+
 
 application = AverageTrader(Coinbase())
 application.check_prices("BTC/USD")

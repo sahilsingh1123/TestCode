@@ -16,17 +16,18 @@ class Singleton:
     def __init__(self, value):
         # This will only be called the first time an instance is created
         self.value = value
-    
+
     def __call__(self, *args: Any, **kwds: Any) -> Any:
         # This will be called every time you call the instance
         # example: my_singleton = Singleton('value')
-        # my_singleton('some', 'args') -> __call__ will be called 
+        # my_singleton('some', 'args') -> __call__ will be called
         # if my_singleton is called
         pass
 
+
 # Testing the singleton
-first_instance = Singleton('First')
-second_instance = Singleton('Second')
+first_instance = Singleton("First")
+second_instance = Singleton("Second")
 
 print(first_instance.value)  # Output: First
 print(second_instance.value)  # Output: First

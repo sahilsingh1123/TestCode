@@ -1,6 +1,6 @@
 from datasets import load_dataset
+from sentence_transformers import SentenceTransformer, losses
 from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
-from sentence_transformers import losses, SentenceTransformer
 from sentence_transformers.trainer import SentenceTransformerTrainer
 from sentence_transformers.training_args import SentenceTransformerTrainingArguments
 
@@ -23,8 +23,8 @@ class EmbeddFineTune:
         self._evaluator = EmbeddingSimilarityEvaluator(
             sentences1=self._validation_dataset_sts["sentence1"],
             sentences2=self._validation_dataset_sts["sentence2"],
-            scores=[score/5 for score in self._validation_dataset_sts["label"]],
-            main_similarity="cosine"
+            scores=[score / 5 for score in self._validation_dataset_sts["label"]],
+            main_similarity="cosine",
         )
 
     def _initialise_model_and_loss_func(self):
@@ -41,7 +41,7 @@ class EmbeddFineTune:
             warmup_steps=100,
             # fp16=True,    # not supported in Apple silicone chips
             eval_steps=100,
-            logging_steps=100
+            logging_steps=100,
         )
 
     def train_supervised_model(self):
@@ -50,12 +50,13 @@ class EmbeddFineTune:
             args=self._training_args,
             train_dataset=self._train_dataset,
             loss=self._train_loss,
-            evaluator=self._evaluator
+            evaluator=self._evaluator,
         )
         self._trainer.train()
 
     def evaluate_trained_model(self):
         self._evaluator(self._embedding_model)
+
 
 ef = EmbeddFineTune()
 ef.train_supervised_model()

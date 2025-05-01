@@ -1,7 +1,7 @@
 import asyncio
 import time
 
-'''
+"""
 Requirements_
 - Build a Request class
     - get() - to fetch the details of the url provided
@@ -9,7 +9,8 @@ Requirements_
 - Build a BringAPI Data class (async)
     - fetch_api_data() - make API call
     - process_fetched_data() - process fetched data
-'''
+"""
+
 
 class Request:
     def __init__(self):
@@ -48,14 +49,12 @@ class BringAPIData:
     def process_fetched_data(self, data):
         print(f"Data is being processed - {data}")
 
+
 async def main():
     urls = ["url_1", "url_2", "url_3", "url_4"]
     bringData = BringAPIData()
     await asyncio.gather(*[bringData.fetch_api_data(url) for url in urls])
 
+
 if __name__ == "__main__":
     asyncio.run(main())
-
-
-
-

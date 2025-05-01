@@ -1,12 +1,14 @@
 """
 RAG and semantic search
 """
+
 import cohere
-import numpy as np
 import faiss
+import numpy as np
 import pandas as pd
 
 cohere_api_key = "vr6snVbxFmKcSBepcoyYOZhZNMoEXrWDcsLSIS05"
+
 
 class SemanticSearch:
     def __init__(self):
@@ -38,11 +40,10 @@ class SemanticSearch:
         Interstellar was nominated for five awards at the 87th Academy Awards, winning Best Visual Effects, and received numerous other accolades"""
 
         # Split into a list of sentences
-        texts = text.split('.')
+        texts = text.split(".")
 
         # Clean up to remove empty spaces and new lines
-        return [t.strip(' \n') for t in texts]
-
+        return [t.strip(" \n") for t in texts]
 
     def _embed_text_chunks(self):
         response = self._co.embed(
@@ -51,6 +52,7 @@ class SemanticSearch:
         ).embeddings
 
         return np.array(response)
+
     def _build_search_index(self):
         dimension = self._embeds.shape[1]
         index = faiss.IndexFlatL2(dimension)
@@ -65,9 +67,8 @@ class SemanticSearch:
         distances, similar_item_ids = self._index.search(np.float32([query_embed]), number_of_results)
 
         # format the results
-        texts_np = np.array(self._texts)    # convert texts list to numpy for easier indexing
-        results = pd.DataFrame(data={'texts': texts_np[similar_item_ids[0]],
-                              'distance': distances[0]})
+        texts_np = np.array(self._texts)  # convert texts list to numpy for easier indexing
+        results = pd.DataFrame(data={"texts": texts_np[similar_item_ids[0]], "distance": distances[0]})
         # 4. Print and return the results
         print(f"Query:'{query}'\nNearest neighbors:")
         print(results)

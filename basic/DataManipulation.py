@@ -1,16 +1,17 @@
-'''iterators and iterables'''
+"""iterators and iterables"""
+
 # list,string,tuples,dict are iterables(located in memory allocation)
 # li = [1,2,3,4]
 # liIter = iter(li) # incase of iters it is not allocated or initialized in memory. we need to call next then only first element inititalized in memory.
 # print(next(liIter)) # every time next is called it will fetch the data and put into memory. when u got at the end then throws an error.
 
 
-#set---------------------------------------------------
+# set---------------------------------------------------
 # set no duplicates
-#myset = set("Hello")
-#myset.remove("e") #- error when not present
-#myset.discard("e") # no error if elemtn not presetn there.
-#myset.pop() #default it will pop the first elemtn
+# myset = set("Hello")
+# myset.remove("e") #- error when not present
+# myset.discard("e") # no error if elemtn not presetn there.
+# myset.pop() #default it will pop the first elemtn
 
 # odds = {1,3,5}
 # evens = {0,2,4}
@@ -18,7 +19,7 @@
 
 # u = odds.union(evens)
 # u = odds.intersection(evens)
-#u = odds.difference(evens) # take the data from odds and not from evens
+# u = odds.difference(evens) # take the data from odds and not from evens
 
 # String ---------------------------------------------------------
 # greeting = "    hello   "
@@ -37,35 +38,36 @@
 
 # add10 = lambda x: x + 10
 
-''' map function -------------------------------'''
+""" map function -------------------------------"""
 
 # a = [1,2,3,4,5]
 # b = map(lambda x: x*2, a)
 # print(list(b))
 # # also usig list comprehension
 # c = [x*2 for x in a]
-print('test')
+print("test")
 
-'''filter function -------------------------------'''
+"""filter function -------------------------------"""
 # filter(fuc, seq) must return true or false.
 # a = [1,2,3,4,5]
 # b = filter(lambda x: x%2==0, a)
 # print(list(b))
 # c = [x for x in a if x%2==0]
 # print(c)
-'''reduce '''
-'''
+"""reduce """
+"""
 from functools import reduce
 a = [1,2,3,4,5]
 re = reduce(lambda x,y: x+y, a)
 print(re)
-'''
-#--------------------shallow and deep copy
+"""
+# --------------------shallow and deep copy
 # shallow - one level deep only refrences of nested child objects
 # deep - full independent copy
 
 # shallow-
 import copy
+
 # org = [1,2,3,4,5]
 # cpy = copy.copy(org)
 # cpy = org.copy()
@@ -82,8 +84,8 @@ import copy
 
 
 ##-------------------------------------------------------------------
-'''string or list reverse manual method'''
-'''
+"""string or list reverse manual method"""
+"""
 ####################33
 to iterate a list in reverse order
 for val in reversed(list):
@@ -94,11 +96,11 @@ for val in listStr:
     while index:
         index -= 1
         print(listStr[index])
-'''
+"""
 
 #################################################3
-#taking input from the user
-'''
+# taking input from the user
+"""
 if __name__ == '__main__':
     while True:
         val = input()
@@ -106,16 +108,17 @@ if __name__ == '__main__':
             break
         else:
             print('input Val == :', val)
-'''
+"""
 
 ###################################
-'''default dict functionality in the python'''
+"""default dict functionality in the python"""
 from collections import defaultdict
+
 #
 # Dic = defaultdict()
 # print(Dic['test'])
 
-'''sub string finding in a string'''
+"""sub string finding in a string"""
 
 # testString = "sahil this is very bad"
 # subString = "this"
@@ -123,7 +126,7 @@ from collections import defaultdict
 # if subString in testString:
 #     print('yes')
 
-'''pass by value and refrence'''
+"""pass by value and refrence"""
 # import copy
 # def appendNum(arr):
 #     arr.append(4)
@@ -135,13 +138,13 @@ from collections import defaultdict
 # print(arr)
 # print(t)
 
-'''list pop method'''
+"""list pop method"""
 # l = [1,2,3]
 # l.pop(0)
 # print(l)
 
 
-'''namedtuple'''
+"""namedtuple"""
 # from collections import namedtuple
 # Point = namedtuple('Point', ['a','b'])
 # p = Point(2,3)
@@ -150,12 +153,12 @@ from collections import defaultdict
 # p._make(t)
 # print(p.a, p.b)
 
-'''counter'''
+"""counter"""
 # from collections import Counter
 # li = [1,1,2,2,2,3,3,3,3]
 # print(Counter(li))
 
-'''chainmap'''
+"""chainmap"""
 # from collections import ChainMap
 # dic1 = {'a':1, 'b':3}
 # dic2 = {'a':2, 'b':3}
@@ -165,7 +168,7 @@ from collections import defaultdict
 # # chainedDict.new_child(dic1)
 # print(chainedDict.values())
 
-'''deque'''
+"""deque"""
 # from collections import deque
 # # initializing deque
 # de = deque([1, 2, 3])
@@ -179,7 +182,7 @@ from collections import defaultdict
 # # printing modified deque
 # print(de)
 
-'''fibonacci series'''
+"""fibonacci series"""
 # 0,1,1,2,3,5,8,13
 # def fib(n):
 #     if n < 2:

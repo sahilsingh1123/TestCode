@@ -4,6 +4,7 @@ This file contains the code snippet for functools lib
 
 import functools
 from functools import wraps
+
 """
 import time
 from datetime import datetime, timedelta
@@ -48,27 +49,34 @@ if _now_seven_days > _end_time_last_run:
 
 print("start")
 
+
 def _wrapper_func(func):
     @wraps(func)
     def _wrap_func(*args, **kwargs):
         print("inside wrap_func")
         func.inside_test()
         return func(*args, **kwargs)
+
     return _wrap_func
+
 
 def _wrapper_func_2(func):
     @wraps(func)
     def _wrap_func(*args, **kwargs):
         print("inside wrap_func2")
         return func(*args, **kwargs)
+
     return _wrap_func
+
 
 @_wrapper_func_2
 @_wrapper_func
 def test(val: str, val2: str):
     print(f"inside test method, val: {val}")
     print(f"inside test method, val2: {val2}")
+
     def inside_test():
         print("inside inside test-func")
 
-test(1,2)
+
+test(1, 2)

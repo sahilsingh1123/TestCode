@@ -1,6 +1,8 @@
 from lib.db import create_user, find_user
 from lib.stringtools import get_random_string
+
 from .event import post_event
+
 
 def register_new_user(name: str, password: str, email: str):
     # create an entry in the database
@@ -8,6 +10,7 @@ def register_new_user(name: str, password: str, email: str):
 
     # post an event
     post_event("user_registered", user)
+
 
 def password_forgotten(email: str):
     # retrieve the user
@@ -18,6 +21,7 @@ def password_forgotten(email: str):
 
     # post an event
     post_event("user_password_forgotten", user)
+
 
 def reset_password(code: str, email: str, password: str):
 

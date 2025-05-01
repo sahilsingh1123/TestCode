@@ -1,5 +1,7 @@
 from lib.db import create_user, find_user
+
 from .event import post_event
+
 
 def upgrade_plan(email: str):
     # find the user

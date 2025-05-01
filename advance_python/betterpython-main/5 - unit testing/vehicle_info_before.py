@@ -10,7 +10,9 @@ class VehicleInfo:
     # You can optionally provide an amount below which no tax is computed
     def compute_tax(self, tax_exemption_amount: int = 0) -> float:
         if tax_exemption_amount < 0:
-            raise ValueError(f"tax_exemption_amount should be a positive number, but received {tax_exemption_amount} instead.")
+            raise ValueError(
+                f"tax_exemption_amount should be a positive number, but received {tax_exemption_amount} instead."
+            )
         tax_percentage = 0.05
         if self.electric:
             tax_percentage = 0.02
@@ -21,6 +23,7 @@ class VehicleInfo:
     def can_lease(self, year_income: int) -> bool:
         # to do
         pass
+
 
 # create a vehicle info object
 v = VehicleInfo("BMW", False, 10000)

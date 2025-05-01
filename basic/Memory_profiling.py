@@ -1,13 +1,13 @@
-'''
+"""
 Memory profiling could be done with multiple options
 - tracemalloc
 - cprofile
 - mem_tools
-'''
+"""
 
 import tracemalloc
 
-'''Using the tracemalloc for memory profiling'''
+"""Using the tracemalloc for memory profiling"""
 
 
 def sum_mem():
@@ -27,10 +27,10 @@ snapshot = tracemalloc.take_snapshot()
 top_stats = snapshot.statistics("lineno")
 [print(stat) for stat in top_stats]
 
-'''
+"""
 comparing before and after
 - we can also filter the snapshots based on criteria
-'''
+"""
 
 
 def fib(n):

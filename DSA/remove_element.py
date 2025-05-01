@@ -16,18 +16,16 @@ while continue_execution:
         is_matched = False
     # if i != 0:
     #     j += 1
-    if i-1 == len(needle) - 1 and is_matched:
+    if i - 1 == len(needle) - 1 and is_matched:
         index = j - len(needle)
         break
-
 
 
 # palindrome
 import re
 
-
 s = "A man, a plan, a canal: Panama"
-s = re.sub(r'[^A-Za-z0-9]', '', s)
+s = re.sub(r"[^A-Za-z0-9]", "", s)
 s = s.strip().lower()
 # v = s[::-1]
 if s == s[::-1]:
@@ -35,8 +33,8 @@ if s == s[::-1]:
 
 
 # print("highest number count having half of the length")
-nums = [0,1,2,2,3,4,5,0,3,3,3,5,1,1,1]
-nums = [1,2,2,3,2,5,6]
+nums = [0, 1, 2, 2, 3, 4, 5, 0, 3, 3, 3, 5, 1, 1, 1]
+nums = [1, 2, 2, 3, 2, 5, 6]
 
 candidate = None
 count = 0
@@ -45,11 +43,11 @@ count = 0
 for num in nums:
     if count == 0:
         candidate = num
-    count += (1 if num == candidate else -1)
+    count += 1 if num == candidate else -1
 
 
 # remove the duplicate element
-nums = [0,1,2,2,3,4,5,0,2]
+nums = [0, 1, 2, 2, 3, 4, 5, 0, 2]
 val = 2
 inside = 0
 while val in nums:
@@ -58,7 +56,7 @@ while val in nums:
 
 
 # remove duplicate elements from a list
-nums = [0,1,2,2,3,4,5,0,2,5]
+nums = [0, 1, 2, 2, 3, 4, 5, 0, 2, 5]
 # nums = [1,1,2]
 # nums = [0,0,1,1,1,2,2,3,3,4]
 total_idx = len(nums) - 1
@@ -73,19 +71,19 @@ while i < total_idx:
         total_idx = len(nums) - 1
         popped = True
     if j >= total_idx:
-            i += 1
-            j = i + 1
+        i += 1
+        j = i + 1
     elif not popped:
-            j += 1
+        j += 1
 
 # answer by chat-gpt
-for i in range(len(nums)-1, -1, -1):
+for i in range(len(nums) - 1, -1, -1):
     if nums[i] in nums[:i]:
         nums.pop(i)
 
 
 # find prefix
-strs = ["flower","flow","flight"]
+strs = ["flower", "flow", "flight"]
 # strs = ["cap", "captain", "capital"]
 # strs = ["ab", "a"]
 first_word = strs[0]

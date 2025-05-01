@@ -1,7 +1,7 @@
-'''
+"""
 
 This will consist the code related with generators
-'''
+"""
 
 
 # Concept structure for generators
@@ -25,9 +25,9 @@ class firstn:
 firstn_object = firstn(1000000)
 print(sum(firstn_object))
 
-'''
+"""
 Get the sequence of number
-'''
+"""
 
 
 def firstn(n):

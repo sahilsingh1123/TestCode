@@ -12,9 +12,7 @@ class Bard:
     instrument: str = "flute"
 
     def make_a_noise(self) -> None:
-        print(
-            f"I am {self.name} and I play the {self.instrument}. Toss a coin to your Witcher!"
-        )
+        print(f"I am {self.name} and I play the {self.instrument}. Toss a coin to your Witcher!")
 
 
 def register() -> None:

@@ -2,6 +2,7 @@ import tkinter as tk
 import uuid
 from abc import ABC, abstractmethod
 
+
 class Model:
     def __init__(self):
         self.uuid = []
@@ -12,11 +13,12 @@ class Model:
     def clear(self):
         self.uuid = []
 
+
 class Controller:
     def __init__(self, model, view):
         self.model = model
         self.view = view
-    
+
     def start(self):
         self.view.setup(self)
         self.view.start_main_loop()
@@ -32,6 +34,7 @@ class Controller:
         self.model.clear()
         self.view.clear_list()
 
+
 class View(ABC):
     @abstractmethod
     def setup(self, controller):
@@ -44,10 +47,11 @@ class View(ABC):
     @abstractmethod
     def clear_list(self):
         pass
-    
+
     @abstractmethod
     def start_main_loop(self):
         pass
+
 
 class TkView(View):
     def setup(self, controller):
@@ -64,7 +68,9 @@ class TkView(View):
         self.label.pack()
         self.list = tk.Listbox(self.frame)
         self.list.pack(fill=tk.BOTH, expand=1)
-        self.generate_uuid_button = tk.Button(self.frame, text="Generate UUID", command=controller.handle_click_generate_uuid)
+        self.generate_uuid_button = tk.Button(
+            self.frame, text="Generate UUID", command=controller.handle_click_generate_uuid
+        )
         self.generate_uuid_button.pack()
         self.clear_button = tk.Button(self.frame, text="Clear list", command=controller.handle_click_clear_list)
         self.clear_button.pack()
@@ -74,10 +80,11 @@ class TkView(View):
 
     def clear_list(self):
         self.list.delete(0, tk.END)
-    
+
     def start_main_loop(self):
         # start the loop
         self.root.mainloop()
+
 
 # create the MVC & start the application
 c = Controller(Model(), TkView())

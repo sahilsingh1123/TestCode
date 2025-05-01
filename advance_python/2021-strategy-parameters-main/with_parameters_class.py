@@ -1,6 +1,7 @@
 """
 Basic example of a Trading bot with a strategy pattern.
 """
+
 import statistics
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
@@ -63,12 +64,8 @@ class TradingBot:
     def run(self, symbol: str):
         """Run the trading bot once for a particular symbol, with a given strategy."""
         prices = self.exchange.get_market_data(symbol)
-        should_buy = self.trading_strategy.should_buy(
-            prices, StrategyParameters(min_price=31000)
-        )
-        should_sell = self.trading_strategy.should_sell(
-            prices, StrategyParameters(max_price=33000)
-        )
+        should_buy = self.trading_strategy.should_buy(prices, StrategyParameters(min_price=31000))
+        should_sell = self.trading_strategy.should_sell(prices, StrategyParameters(max_price=33000))
         if should_buy:
             self.exchange.buy(symbol, 10)
         elif should_sell:

@@ -1,19 +1,19 @@
 import logging
 from functools import wraps
 
-
 # Example from: https://www.geeksforgeeks.org/create-an-exception-logging-decorator-in-python/
+
 
 def create_logger():
     # create a logger object
-    logger = logging.getLogger('exc_logger')
+    logger = logging.getLogger("exc_logger")
     logger.setLevel(logging.INFO)
 
     # c reate a file to store all the
     # logged exceptions
-    logfile = logging.FileHandler('exc_logger.log')
+    logfile = logging.FileHandler("exc_logger.log")
 
-    fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    fmt = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     formatter = logging.Formatter(fmt)
 
     logfile.setFormatter(formatter)
@@ -24,8 +24,8 @@ def create_logger():
 
 logger = create_logger()
 
-# you will find a log file 
-# created in a given path 
+# you will find a log file
+# created in a given path
 print(logger)
 
 
@@ -52,5 +52,5 @@ def divideByZero():
 
 
 # Driver Code
-if __name__ == '__main__':
+if __name__ == "__main__":
     divideByZero()

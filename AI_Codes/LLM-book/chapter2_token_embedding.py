@@ -1,10 +1,10 @@
-from transformers import AutoModel, AutoTokenizer
-from transformers.agents.tools import Tool
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.cluster import KMeans
 import faiss
 import numpy as np
+from sentence_transformers import SentenceTransformer
+from sklearn.cluster import KMeans
+from sklearn.metrics.pairwise import cosine_similarity
+from transformers import AutoModel, AutoTokenizer
+from transformers.agents.tools import Tool
 
 
 class TextEmbedding:
@@ -53,7 +53,7 @@ class TextEmbedding:
             "Machine learning is amazing.",
             "Python is great for data science.",
             "I enjoy deep learning projects.",
-            "Data science is an exciting field."
+            "Data science is an exciting field.",
         ]
 
         embedding = self.model.encode(sentences)
@@ -75,7 +75,7 @@ class TextEmbedding:
             "Machine learning is amazing.",
             "Python is great for data science.",
             "I enjoy deep learning projects.",
-            "Data science is an exciting field."
+            "Data science is an exciting field.",
         ]
         embeddings = self.model.encode(sentences)
         dimension = embeddings.shape[1]
@@ -103,6 +103,3 @@ if __name__ == "__main__":
     tEmbd._find_cosine_similarity()
     tEmbd._text_clustering()
     tEmbd._retrieval_with_FAISS()
-
-
-

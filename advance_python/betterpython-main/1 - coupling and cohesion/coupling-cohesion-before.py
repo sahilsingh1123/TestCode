@@ -1,10 +1,11 @@
-import string
 import random
+import string
+
 
 class VehicleRegistry:
 
     def generate_vehicle_id(self, length):
-        return ''.join(random.choices(string.ascii_uppercase, k=length))
+        return "".join(random.choices(string.ascii_uppercase, k=length))
 
     def generate_vehicle_license(self, id):
         return f"{id[:2]}-{''.join(random.choices(string.digits, k=2))}-{''.join(random.choices(string.ascii_uppercase, k=2))}"
@@ -46,6 +47,7 @@ class Application:
         print(f"Id: {vehicle_id}")
         print(f"License plate: {license_plate}")
         print(f"Payable tax: {payable_tax}")
+
 
 app = Application()
 app.register_vehicle("Volkswagen ID3")

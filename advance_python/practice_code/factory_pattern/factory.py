@@ -1,4 +1,4 @@
-'''
+"""
 This is a factory pattern class
 for creating audio and video quality
 based on the user input = low, high, master
@@ -12,21 +12,22 @@ based on the user input = low, high, master
 4. create different quality exporter class
     and inherit the main factory_export.
 
-'''
+"""
+
 import pathlib
 from abc import ABC, abstractmethod
 
 
 class VideoExporter(ABC):
-    '''video exporter class'''
+    """video exporter class"""
 
     @abstractmethod
     def prepare_export(self, video_data):
-        '''prepares export'''
+        """prepares export"""
 
     @abstractmethod
     def do_export(self, folder: pathlib.Path):
-        '''doing the export'''
+        """doing the export"""
 
 
 class LosslessVideoExporter(VideoExporter):
@@ -60,15 +61,15 @@ class H264Hi422PVideoExporter(VideoExporter):
 
 
 class AudioExporter(ABC):
-    '''video exporter class'''
+    """video exporter class"""
 
     @abstractmethod
     def prepare_export(self, audio_data):
-        '''prepares export'''
+        """prepares export"""
 
     @abstractmethod
     def do_export(self, folder: pathlib.Path):
-        '''doing the export'''
+        """doing the export"""
 
 
 class AACAudioExporter(AudioExporter):
@@ -95,11 +96,11 @@ class ExporterFactory(ABC):
 
     @abstractmethod
     def get_video_exporter(self):
-        '''get the video exporter'''
+        """get the video exporter"""
 
     @abstractmethod
     def get_audio_exporter(self):
-        '''get the audio exporter'''
+        """get the audio exporter"""
 
 
 class LowQualityFactory(ExporterFactory):
@@ -130,11 +131,7 @@ class MasterQualityFactory(ExporterFactory):
 
 
 def get_exporter_factory():
-    factories = {
-        'low': LowQualityFactory(),
-        'high': HighQualityFactory(),
-        'master': MasterQualityFactory()
-    }
+    factories = {"low": LowQualityFactory(), "high": HighQualityFactory(), "master": MasterQualityFactory()}
 
     while True:
         export_quality = input("Enter desired output quality (low, high, master): ")
@@ -148,8 +145,8 @@ def main(fac: ExporterFactory):
     audio_exporter = fac.get_audio_exporter()
 
     # prepare the export
-    video_exporter.prepare_export('placeholder_for_video_data')
-    audio_exporter.prepare_export('placeholder_for_video_data')
+    video_exporter.prepare_export("placeholder_for_video_data")
+    audio_exporter.prepare_export("placeholder_for_video_data")
 
     # do the export
     folder = pathlib.Path("/usr/tmp/video")
@@ -157,6 +154,6 @@ def main(fac: ExporterFactory):
     audio_exporter.do_export(folder)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     factory = get_exporter_factory()
     main(factory)

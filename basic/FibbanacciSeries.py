@@ -1,9 +1,10 @@
-""" this class consists of the recursive method implementation.."""
+"""this class consists of the recursive method implementation.."""
 
 """
 Fibonacci series testing
 """
 from ColorMessagePrint import ColorPrint as pm
+
 
 def fibonacci_iterative(number):
     """
@@ -35,7 +36,7 @@ def fibonacci_recursion(number):
     if number.__lt__(2):
         return number
     else:
-        print(number-2, "inside the else condition of fib", number-1)
+        print(number - 2, "inside the else condition of fib", number - 1)
         return fibonacci_recursion(number - 2) + fibonacci_recursion(number - 1)
 
 

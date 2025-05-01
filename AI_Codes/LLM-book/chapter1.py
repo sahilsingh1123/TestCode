@@ -1,5 +1,6 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
 # import AutoModelForCasualLLM = since we are using traditional LLMs which generates text from left to right
 # AutoModel = This can be used in case where we just want the embedding output not the generated text
 # AutoTokenizer = It automatically picks the valid tokenizer and its mechanism without the manual intervention
@@ -13,18 +14,17 @@ def _run_pipeline(model, tokenizers, query):
         tokenizer=tokenizers,
         return_full_text=False,
         max_new_tokens=500,
-        do_sample=False
+        do_sample=False,
     )
 
-    messages = [
-        {"role": "user", "content": query}
-    ]
+    messages = [{"role": "user", "content": query}]
     output = generator(messages)
     return output[0]["generated_text"]
 
+
 def _run_manually(model, tokenizers, query):
     # we need to specify the device if we are using apple chips in tokenizer
-    device = torch.device("mps")    # I guess we can use this to find device dynamically as well
+    device = torch.device("mps")  # I guess we can use this to find device dynamically as well
     tokens = tokenizers(query, return_tensors="pt").to(device)
     output_tokens = model.generate(**tokens, max_new_tokens=500, do_sample=False)
     output_text = tokenizers.decode(output_tokens[0], skip_special_tokens=True)
@@ -37,7 +37,7 @@ def run_model(query):
         device_map="mps",
         torch_dtype="auto",
         trust_remote_code=True,
-        attn_implementation="eager"
+        attn_implementation="eager",
     )
     tokenizers = AutoTokenizer.from_pretrained("microsoft/Phi-3-mini-4k-instruct")
 
@@ -52,4 +52,3 @@ def run_model(query):
 if __name__ == "__main__":
     query = "Brief me about how ukraine war started"
     print(run_model(query))
-

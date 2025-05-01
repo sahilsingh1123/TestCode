@@ -1,14 +1,16 @@
 import unittest
 from io import StringIO
 from unittest.mock import patch
+
 from before import *
+
 
 class Authorizer_SMS_TestCase(unittest.TestCase):
 
     def test_init_authorized(self):
         auth = Authorizer_SMS()
         self.assertFalse(auth.is_authorized())
-    
+
     def test_code_decimal(self):
         auth = Authorizer_SMS()
         auth.generate_sms_code()
@@ -17,11 +19,11 @@ class Authorizer_SMS_TestCase(unittest.TestCase):
     def test_authorize_success(self):
         auth = Authorizer_SMS()
         auth.generate_sms_code()
-        with patch('builtins.input', return_value=auth.code):
+        with patch("builtins.input", return_value=auth.code):
             auth.authorize()
             self.assertTrue(auth.is_authorized())
 
-    @patch('builtins.input', return_value="1234567")
+    @patch("builtins.input", return_value="1234567")
     def test_authorize_fail(self, mocked_input):
         auth = Authorizer_SMS()
         auth.generate_sms_code()
@@ -40,5 +42,5 @@ class PaymentProcessor_TestCase(unittest.TestCase):
         self.assertTrue(True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

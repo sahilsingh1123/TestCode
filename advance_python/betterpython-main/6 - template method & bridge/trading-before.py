@@ -1,8 +1,9 @@
 from typing import List
 
+
 class Application:
 
-    def __init__(self, trading_strategy = "average"):
+    def __init__(self, trading_strategy="average"):
         self.trading_strategy = trading_strategy
 
     def connect(self):
@@ -37,6 +38,7 @@ class Application:
             print(f"You should sell {coin}!")
         else:
             print(f"No action needed for {coin}.")
+
 
 application = Application("average")
 application.check_prices("BTC/USD")

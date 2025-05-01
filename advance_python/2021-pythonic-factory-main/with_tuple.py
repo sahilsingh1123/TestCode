@@ -87,9 +87,7 @@ def read_factory() -> tuple[VideoExporter, AudioExporter]:
     """Constructs an exporter factory based on the user's preference."""
 
     while True:
-        export_quality = input(
-            f"Enter desired output quality ({', '.join(FACTORIES)}): "
-        )
+        export_quality = input(f"Enter desired output quality ({', '.join(FACTORIES)}): ")
         try:
             (video_class, audio_class) = FACTORIES[export_quality]
             return (video_class(), audio_class())

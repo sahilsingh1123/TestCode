@@ -2,9 +2,11 @@
 test case for creating a sqllite db connection and trying to fetch
 the information from the tables and create and modify tables.
 """
+
 import sqlite3
 
-class CreateDBConnection():
+
+class CreateDBConnection:
     def __init__(self, dbFile):
         try:
             global conn
@@ -20,7 +22,7 @@ class CreateDBConnection():
             print("Exception is:- ", e)
 
         finally:
-            if (self.checkConn()):
+            if self.checkConn():
                 conn.close()
 
     def checkConn(self):
@@ -31,6 +33,5 @@ class CreateDBConnection():
             return False
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     CreateDBConnection("/home/fidel/testDB.db")
-

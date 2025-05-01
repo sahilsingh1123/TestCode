@@ -1,8 +1,8 @@
+import faiss
 import torch
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering, Trainer, TrainingArguments
 from datasets import Dataset, DatasetDict
 from sentence_transformers import SentenceTransformer
-import faiss
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, Trainer, TrainingArguments
 
 # ---------------- Import fine tuned model ------------#
 # Load fine-tuned model
@@ -43,6 +43,7 @@ def get_relevant_docs(query, k=1):
 
 # --------------- QA with RAG Integration --------------- #
 
+
 def answer_query(query):
     # RAG retrieval
     relevant_docs = get_relevant_docs(query, k=1)
@@ -59,8 +60,7 @@ def answer_query(query):
     answer_start = torch.argmax(start_logits)
     answer_end = torch.argmax(end_logits) + 1
 
-    answer = tokenizer.convert_tokens_to_string(
-        tokenizer.convert_ids_to_tokens(inputs["input_ids"][0]))
+    answer = tokenizer.convert_tokens_to_string(tokenizer.convert_ids_to_tokens(inputs["input_ids"][0]))
 
     print(f"Query: {query}")
     print(f"Answer: {answer}")

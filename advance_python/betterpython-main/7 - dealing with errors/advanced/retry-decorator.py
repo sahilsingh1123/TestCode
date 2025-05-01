@@ -1,6 +1,7 @@
-import time
 import math
+import time
 from functools import wraps
+
 
 def retry(ExceptionToCheck, tries=4, delay=3, backoff=2, logger=None):
     """Retry calling the decorated function using an exponential backoff.
@@ -21,6 +22,7 @@ def retry(ExceptionToCheck, tries=4, delay=3, backoff=2, logger=None):
     :param logger: logger to use. If None, print
     :type logger: logging.Logger instance
     """
+
     def deco_retry(f):
 
         @wraps(f)
@@ -44,8 +46,10 @@ def retry(ExceptionToCheck, tries=4, delay=3, backoff=2, logger=None):
 
     return deco_retry
 
+
 @retry(Exception, tries=4)
 def test_fail(text):
     raise Exception("Fail")
+
 
 test_fail("it works!")

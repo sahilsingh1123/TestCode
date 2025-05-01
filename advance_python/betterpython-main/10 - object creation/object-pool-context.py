@@ -1,17 +1,22 @@
 from typing import List
 
-class PoolManager():
+
+class PoolManager:
     def __init__(self, pool):
         self.pool = pool
+
     def __enter__(self):
         self.obj = self.pool.acquire()
         return self.obj
+
     def __exit__(self, type, value, traceback):
         self.pool.release(self.obj)
+
 
 class Reusable:
     def test(self):
         print(f"Using object {id(self)}")
+
 
 class ReusablePool:
 
@@ -33,8 +38,9 @@ class ReusablePool:
         self.in_use.remove(r)
         self.free.append(r)
 
+
 # Create reusable pool
-pool= ReusablePool(2)
+pool = ReusablePool(2)
 
 with PoolManager(pool) as r:
     r.test()

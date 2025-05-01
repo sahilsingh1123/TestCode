@@ -1,9 +1,8 @@
-from api_v2.slack_listener import setup_slack_event_handlers
-from api_v2.log_listener import setup_log_event_handlers
 from api_v2.email_listener import setup_email_event_handlers
-
-from api_v2.user import register_new_user, password_forgotten
+from api_v2.log_listener import setup_log_event_handlers
 from api_v2.plan import upgrade_plan
+from api_v2.slack_listener import setup_slack_event_handlers
+from api_v2.user import password_forgotten, register_new_user
 
 # initialize the event structure
 setup_slack_event_handlers()

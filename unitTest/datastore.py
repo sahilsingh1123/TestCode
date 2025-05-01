@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pandas as pd
 
 
@@ -57,6 +58,7 @@ class Datastore:
             "ActivityDetails",
         ]
         return columns
+
 
 if __name__ == "__main__":
     ds = Datastore()

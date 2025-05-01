@@ -10,7 +10,7 @@ print()
 
 # 2. itertools.batched
 print("itertools.batched example:")
-data = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+data = ["apple", "banana", "cherry", "date", "elderberry"]
 batches = list(itertools.batched(data, 2))  # Batch data into pairs
 print(batches)  # Output: [('apple', 'banana'), ('cherry', 'date'), ('elderberry',)]
 print()
@@ -32,7 +32,7 @@ print()
 
 # 5. itertools.combinations
 print("itertools.combinations example:")
-letters = ['A', 'B', 'C', 'D']
+letters = ["A", "B", "C", "D"]
 combinations = list(itertools.combinations(letters, 2))  # All 2-length combinations
 print(combinations)  # Output: [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')]
 print()
@@ -45,7 +45,7 @@ print()
 
 # 7. itertools.compress
 print("itertools.compress example:")
-data = ['A', 'B', 'C', 'D']
+data = ["A", "B", "C", "D"]
 selectors = [1, 0, 1, 0]
 compressed = list(itertools.compress(data, selectors))  # Select elements based on selectors
 print(compressed)  # Output: ['A', 'C']
@@ -60,7 +60,7 @@ print()
 
 # 9. itertools.cycle
 print("itertools.cycle example:")
-cycled = itertools.cycle(['A', 'B', 'C'])
+cycled = itertools.cycle(["A", "B", "C"])
 for i in range(6):
     print(next(cycled))  # Output: A B C A B C
 print()
@@ -81,7 +81,7 @@ print()
 
 # 12. itertools.groupby
 print("itertools.groupby example:")
-data = [('a', 1), ('a', 2), ('b', 1), ('b', 2)]
+data = [("a", 1), ("a", 2), ("b", 1), ("b", 2)]
 grouped = [(key, list(group)) for key, group in itertools.groupby(data, key=lambda x: x[0])]  # Group by first element
 print(grouped)  # Output: [('a', [('a', 1), ('a', 2)]), ('b', [('b', 1), ('b', 2)])]
 print()
@@ -100,13 +100,13 @@ print()
 
 # 15. itertools.product
 print("itertools.product example:")
-products = list(itertools.product([1, 2], ['A', 'B']))  # Cartesian product of both lists
+products = list(itertools.product([1, 2], ["A", "B"]))  # Cartesian product of both lists
 print(products)  # Output: [(1, 'A'), (1, 'B'), (2, 'A'), (2, 'B')]
 print()
 
 # 16. itertools.repeat
 print("itertools.repeat example:")
-repeated = list(itertools.repeat('Hello', 3))  # Repeat 'Hello' 3 times
+repeated = list(itertools.repeat("Hello", 3))  # Repeat 'Hello' 3 times
 print(repeated)  # Output: ['Hello', 'Hello', 'Hello']
 print()
 
@@ -135,6 +135,6 @@ print()
 # 20. itertools.zip_longest
 print("itertools.zip_longest example:")
 list1 = [1, 2, 3]
-list2 = ['A', 'B']
-zipped = list(itertools.zip_longest(list1, list2, fillvalue='?'))  # Zip lists with '?'
+list2 = ["A", "B"]
+zipped = list(itertools.zip_longest(list1, list2, fillvalue="?"))  # Zip lists with '?'
 print(zipped)  # Output: [(1, 'A'), (2, 'B'), (3, '?')]

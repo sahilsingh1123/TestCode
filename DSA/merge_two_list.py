@@ -12,7 +12,7 @@ class Merge:
         k = m + n - 1
 
         while j >= 0:
-            if i >=0 and nums1[i] > nums2[j]:
+            if i >= 0 and nums1[i] > nums2[j]:
                 try:
                     nums1[k] = nums1[i]
                 except Exception as e:
@@ -29,8 +29,8 @@ class Merge:
 
 
 if __name__ == "__main__":
-    nums1 = [1,2,3,4,5,0,0,0,0]
+    nums1 = [1, 2, 3, 4, 5, 0, 0, 0, 0]
     m = 5
-    nums2 = [3,6,7,8]
+    nums2 = [3, 6, 7, 8]
     n = 4
     Merge().merge_list(nums1, m, nums2, n)

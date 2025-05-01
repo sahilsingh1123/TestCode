@@ -47,9 +47,9 @@ import queue
 my_queue = queue.PriorityQueue()
 
 # Add items to the queue with priorities
-my_queue.put((2, 'Task 1'))
-my_queue.put((1, 'Task 2'))
-my_queue.put((3, 'Task 3'))
+my_queue.put((2, "Task 1"))
+my_queue.put((1, "Task 2"))
+my_queue.put((3, "Task 3"))
 
 # Get and remove items from the queue
 item1 = my_queue.get()
@@ -58,12 +58,14 @@ item2 = my_queue.get()
 print(item1)  # Output: (1, 'Task 2')
 print(item2)  # Output: (2, 'Task 1')
 
+
 ########################################
 # linked list
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+
 
 class LinkedList:
     def __init__(self):

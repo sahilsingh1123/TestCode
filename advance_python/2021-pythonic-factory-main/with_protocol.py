@@ -135,9 +135,7 @@ def read_factory() -> ExporterFactory:
     """Constructs an exporter factory based on the user's preference."""
 
     while True:
-        export_quality = input(
-            f"Enter desired output quality ({', '.join(FACTORIES)}): "
-        )
+        export_quality = input(f"Enter desired output quality ({', '.join(FACTORIES)}): ")
         try:
             return FACTORIES[export_quality]
         except KeyError:

@@ -1,8 +1,8 @@
+import faiss
 import torch
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering, Trainer, TrainingArguments
 from datasets import Dataset, DatasetDict
 from sentence_transformers import SentenceTransformer
-import faiss
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, Trainer, TrainingArguments
 
 # Define fine-tuning data
 fine_tune_data = [
@@ -34,6 +34,7 @@ model = AutoModelForQuestionAnswering.from_pretrained("distilbert-base-uncased")
 # Check if MPS (Metal Performance Shaders) is available
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 model.to(device)
+
 
 # Tokenize data
 def preprocess_data(examples):
@@ -70,17 +71,12 @@ training_args = TrainingArguments(
     per_device_train_batch_size=2,
     num_train_epochs=3,
     save_strategy="no",
-    logging_dir='./logs',
+    logging_dir="./logs",
     no_cuda=True,
 )
 
 # Trainer
-trainer = Trainer(
-    model=model,
-    args=training_args,
-    train_dataset=train_dataset["train"],
-    tokenizer=tokenizer
-)
+trainer = Trainer(model=model, args=training_args, train_dataset=train_dataset["train"], tokenizer=tokenizer)
 
 # Fine-tune the model
 trainer.train()
@@ -88,4 +84,3 @@ trainer.train()
 # Save the fine-tuned model
 model.save_pretrained("fine_tuned_hospital_model")
 tokenizer.save_pretrained("fine_tuned_hospital_model")
-

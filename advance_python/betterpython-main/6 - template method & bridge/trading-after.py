@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+
 class TradingBot(ABC):
-    
+
     def connect(self):
         print(f"Connecting to Crypto exchange...")
 
@@ -29,6 +30,7 @@ class TradingBot(ABC):
     def should_sell(self, prices: List[float]) -> bool:
         pass
 
+
 class AverageTrader(TradingBot):
 
     def list_average(self, l: List[float]) -> float:
@@ -40,6 +42,7 @@ class AverageTrader(TradingBot):
     def should_sell(self, prices: List[float]) -> bool:
         return prices[-1] > self.list_average(prices)
 
+
 class MinMaxTrader(TradingBot):
 
     def should_buy(self, prices: List[float]) -> bool:
@@ -47,6 +50,7 @@ class MinMaxTrader(TradingBot):
 
     def should_sell(self, prices: List[float]) -> bool:
         return prices[-1] == max(prices)
+
 
 application = MinMaxTrader()
 application.check_prices("BTC/USD")

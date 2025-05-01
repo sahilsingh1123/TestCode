@@ -13,10 +13,7 @@ class InsideLLM:
 
     def _initialise_model(self):
         return AutoModelForCausalLM.from_pretrained(
-            self._model_name,
-            device_map="mps",
-            torch_dtype="auto",
-            trust_remote_code=True
+            self._model_name, device_map="mps", torch_dtype="auto", trust_remote_code=True
         )
 
     def _create_pipeline(self):
@@ -47,10 +44,9 @@ class InsideLLM:
         lm_head = self.model.lm_head(model_output[0])
 
         # fetch token id of the last element
-        token_id = lm_head[0,-1].argmax(-1)
+        token_id = lm_head[0, -1].argmax(-1)
         answer = self.tokenizer.decode(token_id)
         print(answer)
-
 
     def model_with_cache(self):
         prompt = "write an email to HR for raise in salary. It should be in detail"
@@ -58,11 +54,11 @@ class InsideLLM:
         generated_output = self.model.generate(
             input_ids=input_ids,
             max_new_tokens=100,
-            use_cache=True  # default is True always [set False to see the difference]
+            use_cache=True,  # default is True always [set False to see the difference]
         )
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     llm = InsideLLM()
     # llm.visualise_input_output()
     # llm.probability_distribution()

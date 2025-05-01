@@ -1,5 +1,7 @@
 import unittest
+
 from vehicle_info_after import VehicleInfo
+
 
 class TestVehicleInfoMethods(unittest.TestCase):
 
@@ -16,7 +18,7 @@ class TestVehicleInfoMethods(unittest.TestCase):
     # def test_compute_tax_exemption(self):
     #     v = VehicleInfo("BMW", False, 10000)
     #     self.assertEqual(v.compute_tax(5000), 250)
-    
+
     # def test_compute_tax_exemption_negative(self):
     #     v = VehicleInfo("BMW", False, 10000)
     #     self.assertRaises(ValueError, v.compute_tax, -5000)
@@ -36,6 +38,7 @@ class TestVehicleInfoMethods(unittest.TestCase):
     # def test_can_lease_negative_income(self):
     #     v = VehicleInfo("BMW", False, 10000)
     #     self.assertRaises(ValueError, v.can_lease, -5000)
+
 
 # run the actual unittests
 unittest.main()

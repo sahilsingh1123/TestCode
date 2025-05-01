@@ -1,7 +1,8 @@
 import tkinter as tk
 import uuid
 
-class UUIDGen():
+
+class UUIDGen:
     def __init__(self):
         # setup tkinter
         self.root = tk.Tk()
@@ -35,6 +36,7 @@ class UUIDGen():
         # clear the uuid list and delete it from the list
         self.uuid = []
         self.list.delete(0, tk.END)
+
 
 # start the application
 u = UUIDGen()
